@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Moment } from 'src/app/Moments';
+import { Moment } from 'src/app/Moment';
 import { MomentService } from 'src/app/services/moment.service';
 import { MessagesService } from 'src/app/services/messages.service';
 
