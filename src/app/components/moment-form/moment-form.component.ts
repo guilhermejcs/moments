@@ -13,14 +13,18 @@ export class MomentFormComponent implements OnInit {
   ngOnInit(): void {
     this.momentForm = new FormGroup({
       id: new FormControl(''),
-      title: new FormControl('', Validators.required),
-      description: new FormControl('', Validators.required),
+      title: new FormControl(
+        this.momentData ? this.momentData.title : '',
+        Validators.required
+      ),
+      description: new FormControl(this.momentData ? this.momentData.description : '', Validators.required),
       image: new FormControl(''),
     });
   }
 
   @Output() onSubmit = new EventEmitter<Moment>();
   @Input() btnText!: string;
+  @Input() momentData: Moment | null = null;
   momentForm!: FormGroup;
 
   get title() {
@@ -43,6 +47,6 @@ export class MomentFormComponent implements OnInit {
     }
     console.log(this.momentForm.value);
 
-    this.onSubmit.emit(this.momentForm.value)
+    this.onSubmit.emit(this.momentForm.value);
   }
 }
